@@ -41,7 +41,7 @@ The AI CSV Data Analyst is designed to be a local-first application that enables
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/Akshit-Akshit/ai-csv-data-analyst.git
 cd ai-csv-data-analyst
 
 # Create and activate virtual environment
