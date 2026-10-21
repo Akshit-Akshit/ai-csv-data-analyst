@@ -148,6 +148,12 @@ def load_csv(file_path: str | Path, delimiter: str | None = ",") -> LoadedCSV:
         # Strip whitespace from headers
         headers = [h.strip() for h in first_row]
 
+        # Reject duplicate headers to prevent silent data loss
+        if len(headers) != len(set(headers)):
+            raise LoadError(
+                message=f"Duplicate column names detected: {file_path}",
+                file_path=str(file_path)
+            )
         # Extract data rows
         rows: list[dict[str, Any]] = []
         for row in reader:

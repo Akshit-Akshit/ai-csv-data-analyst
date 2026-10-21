@@ -39,7 +39,7 @@ class TestLoadCSV:
         path = create_temp_csv(content)
         try:
             result = load_csv(path)
-            
+
             assert result.is_valid
             assert result.file_path == path
             assert result.row_count == 2
@@ -56,7 +56,7 @@ class TestLoadCSV:
         """Test loading a non-existent file raises LoadError."""
         with pytest.raises(LoadError) as exc_info:
             load_csv("/nonexistent/path/to/file.csv")
-        
+
         assert "File not found" in exc_info.value.message
         assert "/nonexistent/path/to/file.csv" in exc_info.value.file_path or exc_info.value.file_path is None
 
@@ -66,7 +66,7 @@ class TestLoadCSV:
         path = create_temp_csv(content)
         try:
             result = load_csv(path)
-            
+
             assert result.is_valid
             assert result.is_empty
             assert result.row_count == 0
@@ -81,7 +81,7 @@ class TestLoadCSV:
         path = create_temp_csv(content)
         try:
             result = load_csv(path)
-            
+
             assert result.is_valid
             assert result.row_count == 0
             assert result.column_count == 3
@@ -97,7 +97,7 @@ class TestLoadCSV:
         path = create_temp_csv(content)
         try:
             result = load_csv(path)
-            
+
             assert result.is_valid
             assert result.row_count == 3
             assert result.rows[0]['age'] == ''
@@ -114,7 +114,7 @@ class TestLoadCSV:
         path = create_temp_csv(content)
         try:
             result = load_csv(path)
-            
+
             assert result.is_valid
             assert result.rows[0]['name'] == 'Alice，'
             assert result.rows[0]['description'] == 'Hello 世界'
@@ -127,7 +127,7 @@ class TestLoadCSV:
         path = create_temp_csv(content)
         try:
             result = load_csv(path)
-            
+
             assert result.is_valid
             assert result.rows[0]['description'] == 'Hello, World'
             assert result.rows[1]['description'] == 'Test, Case'
@@ -140,7 +140,7 @@ class TestLoadCSV:
         path = create_temp_csv(content)
         try:
             result = load_csv(path)
-            
+
             assert result.is_valid
             assert result.rows[0]['description'] == 'Line 1\nLine 2'
         finally:
@@ -152,7 +152,7 @@ class TestLoadCSV:
         path = create_temp_csv(content)
         try:
             result = load_csv(path)
-            
+
             assert result.is_valid
             # Headers should be stripped
             assert result.headers == ['Name', 'Age', 'City']
@@ -166,7 +166,7 @@ class TestLoadCSV:
         path = create_temp_csv(content)
         try:
             result = load_csv(path)
-            
+
             # Our loader uses comma, so semicolon-delimited CSV should not parse correctly
             # This is expected behavior - the loader doesn't auto-detect delimiter
             # The test verifies we have a clear error message
@@ -182,7 +182,7 @@ class TestLoadCSV:
         path = create_temp_csv(content)
         try:
             result = load_csv(path)
-            
+
             assert isinstance(result, LoadedCSV)
             assert isinstance(result.row_count, int)
             assert isinstance(result.column_count, int)
@@ -196,7 +196,7 @@ class TestLoadCSV:
         try:
             result1 = load_csv(path_str)
             result2 = load_csv(str(Path(path_str)))
-            
+
             assert result1.row_count == result2.row_count
             assert result1.headers == result2.headers
         finally:
@@ -213,6 +213,7 @@ class TestLoadCSV:
         """Test loading a CSV file with UTF-8 BOM encoding."""
         content = "\ufeffname,age\nAlice,30"
         fd, path = tempfile.mkstemp(suffix='.csv')
+        os.close(fd)
         try:
             with open(path, 'wb') as f:
                 f.write(content.encode('utf-8'))
@@ -226,11 +227,24 @@ class TestLoadCSV:
     def test_load_csv_malformed_unclosed_quote(self) -> None:
         """Test loading a file with an unclosed quote raises LoadError."""
         fd, path = tempfile.mkstemp(suffix='.csv')
+        os.close(fd)
         try:
             with open(path, 'w', encoding='utf-8') as f:
                 f.write('col1,col2\n"unclosed quote,val2')
             with pytest.raises(LoadError) as exc_info:
                 load_csv(path)
             assert "Malformed CSV" in exc_info.value.message
+        finally:
+            os.unlink(path)
+
+
+    def test_duplicate_headers_are_not_silently_overwritten(self) -> None:
+        """Duplicate headers should raise LoadError rather than lose data."""
+        content = "Name,Name,Age\nAlice,Smith,20"
+        path = create_temp_csv(content)
+
+        try:
+            with pytest.raises(LoadError):
+                load_csv(path)
         finally:
             os.unlink(path)

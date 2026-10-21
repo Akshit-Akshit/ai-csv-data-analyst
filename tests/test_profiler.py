@@ -468,6 +468,7 @@ Z,4,40
         """Test that CSV with UTF-8 BOM headers is profiled cleanly without BOM artifact."""
         content = "\ufeffid,amount\n1,10\n2,20"
         fd, path = tempfile.mkstemp(suffix='.csv')
+        os.close(fd)
         try:
             with open(path, 'wb') as f:
                 f.write(content.encode('utf-8'))
