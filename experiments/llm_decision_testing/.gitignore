@@ -1,0 +1,18 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Local sensitive configuration (use config.example.json as template)
+config.json
+
+# Local experiment runs (keep results directory tracked via .gitkeep)
+results/*.json
+!results/.gitkeep
+

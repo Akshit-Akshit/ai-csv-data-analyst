@@ -1,0 +1,72 @@
+{
+  "file_path": "fixtures/synthetic/transactions.csv",
+  "row_count": 10000,
+  "column_count": 3,
+  "headers": ["transaction_id", "Customer_ID", "amount"],
+  "overview": {
+    "rows": 10000,
+    "columns": 3,
+    "headers": ["transaction_id", "Customer_ID", "amount"],
+    "duplicate_rows": 0,
+    "unique_rows": 10000
+  },
+  "columns": {
+    "transaction_id": {
+      "inferred_type": "text",
+      "physical_type": "string",
+      "semantic_role": "identifier",
+      "missing_count": 0,
+      "valid_count": 10000,
+      "distinct_count": 10000,
+      "identifier_stats": {
+        "is_candidate_key": true,
+        "is_sequential": false,
+        "duplicate_identifier_count": 0
+      }
+    },
+    "Customer_ID": {
+      "inferred_type": "numeric",
+      "physical_type": "integer",
+      "semantic_role": "identifier",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "valid_count": 10000,
+      "distinct_count": 2400,
+      "has_high_cardinality": false,
+      "numeric_stats": null,
+      "outlier_stats": null,
+      "identifier_stats": {
+        "distinct_count": 2400,
+        "missing_count": 0,
+        "duplicate_identifier_count": 7600,
+        "is_candidate_key": false,
+        "is_sequential": false
+      },
+      "type_evidence": {
+        "is_id_name": true,
+        "distinct_count": 2400,
+        "uniqueness_ratio": 0.24
+      }
+    },
+    "amount": {
+      "inferred_type": "numeric",
+      "physical_type": "float",
+      "semantic_role": "measure",
+      "missing_count": 0,
+      "valid_count": 10000,
+      "distinct_count": 3500,
+      "numeric_stats": {
+        "count": 10000,
+        "mean": 85.5,
+        "median": 62.0,
+        "std_dev": 74.2,
+        "min": 5.0,
+        "max": 1200.0,
+        "q1": 35.0,
+        "q3": 110.0
+      }
+    }
+  },
+  "quality_issues": []
+}
+

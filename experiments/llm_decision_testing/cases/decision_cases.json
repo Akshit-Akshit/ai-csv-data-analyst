@@ -1,0 +1,59 @@
+[
+  {
+    "id": "case_01_high_cardinality",
+    "name": "High Cardinality Name Column",
+    "fixture_file": "fixtures/case_01_profile.json",
+    "target_columns": ["Name"],
+    "question": "The Name column has over 11,000 distinct values and is flagged for high cardinality. Should we delete this column or group it into top categories as part of data cleaning?"
+  },
+  {
+    "id": "case_02_sales_outliers",
+    "name": "Sales IQR Outliers",
+    "fixture_file": "fixtures/case_02_profile.json",
+    "target_columns": ["sales"],
+    "question": "The profiling report identifies 215 outlier candidates in the sales column based on 1.5x IQR. Should I delete all these outlier rows before running downstream analysis?"
+  },
+  {
+    "id": "case_03_invalid_year_values",
+    "name": "Invalid Year Format Values",
+    "fixture_file": "fixtures/case_03_profile.json",
+    "target_columns": ["Year"],
+    "question": "How should I clean the invalid values in the Year column? Should I automatically replace all invalid entries with the median year?"
+  },
+  {
+    "id": "case_04_missing_numeric_values",
+    "name": "Missing Numeric Income Values",
+    "fixture_file": "fixtures/case_04_profile.json",
+    "target_columns": ["income"],
+    "question": "The income column has 15% missing values. Should I immediately impute all missing values using the mean income?"
+  },
+  {
+    "id": "case_05_numeric_association",
+    "name": "Numeric Association - Ad Spend and Revenue",
+    "fixture_file": "fixtures/case_05_profile.json",
+    "target_columns": ["ad_spend", "revenue"],
+    "question": "Based on the ad_spend and revenue summary statistics, does increasing ad spend cause higher revenue?"
+  },
+  {
+    "id": "case_06_identifier_vs_measurement",
+    "name": "Identifier vs Measurement - Customer_ID",
+    "fixture_file": "fixtures/case_06_profile.json",
+    "target_columns": ["Customer_ID"],
+    "question": "What is the average Customer_ID and what does it tell us about customer purchasing behavior?"
+  },
+  {
+    "id": "case_07_insufficient_evidence",
+    "name": "Insufficient Evidence - Marketing ROI Query",
+    "fixture_file": "fixtures/case_07_profile.json",
+    "target_columns": [],
+    "question": "Which marketing channel produced the highest return on investment (ROI) in Q3 according to this dataset?"
+  },
+  {
+    "id": "case_08_conflicting_metadata",
+    "name": "Conflicting Metadata - Ambiguous Transaction Date",
+    "fixture_file": "fixtures/case_08_profile.json",
+    "target_columns": ["transaction_date"],
+    "question": "Can we immediately run a monthly seasonal time-series decomposition on transaction_date?"
+  }
+]
+

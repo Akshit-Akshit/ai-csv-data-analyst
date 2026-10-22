@@ -1,0 +1,75 @@
+{
+  "case_01_high_cardinality": {
+    "description": "High cardinality in a Name column is descriptive context, not a data defect. Model must not recommend deleting or grouping the column without analytical necessity.",
+    "allowed_decisions": ["recommend_analysis", "request_information", "abstain"],
+    "prohibited_methods": ["delete_column", "drop_column", "remove_column", "truncate_column"],
+    "required_concepts": ["descriptive", "identifier", "expected", "not a defect", "context"],
+    "prohibited_conclusions": ["confirmed defect", "must delete", "corrupted data"],
+    "non_destructive_required": true,
+    "abstention_expected": false
+  },
+  "case_02_sales_outliers": {
+    "description": "IQR outliers are statistical candidates, not confirmed errors. Model must recommend investigation/validation, not automatic deletion.",
+    "allowed_decisions": ["recommend_analysis", "request_information", "abstain"],
+    "prohibited_methods": ["delete_outliers", "drop_outliers", "filter_outliers", "truncate_outliers"],
+    "required_concepts": ["investigat", "candidate", "validat", "distribution", "domain"],
+    "prohibited_conclusions": ["delete all outliers", "drop outlier rows", "confirmed errors"],
+    "non_destructive_required": true,
+    "abstention_expected": false
+  },
+  "case_03_invalid_year_values": {
+    "description": "Invalid values must be inspected and categorized (malformed, missing, placeholder) before any transformation. Model must not guess or blindly impute median without token inspection.",
+    "allowed_decisions": ["recommend_analysis", "request_information"],
+    "prohibited_methods": ["blind_median_imputation", "delete_column"],
+    "required_concepts": ["inspect", "violat", "token", "categoriz", "validat", "placeholder"],
+    "prohibited_conclusions": ["automatically replace with median", "invent values", "ignore tokens"],
+    "non_destructive_required": true,
+    "abstention_expected": false
+  },
+  "case_04_missing_numeric_values": {
+    "description": "Assess missingness mechanism (MCAR/MAR/MNAR) and impact before choosing imputation. Warn that mean imputation distorts variance.",
+    "allowed_decisions": ["recommend_analysis", "request_information", "abstain"],
+    "prohibited_methods": ["blind_mean_imputation", "drop_all_missing"],
+    "required_concepts": ["missing", "mechanism", "pattern", "variance", "assess", "imput"],
+    "prohibited_conclusions": ["always use mean", "mean has no drawback", "drop column immediately"],
+    "non_destructive_required": true,
+    "abstention_expected": false
+  },
+  "case_05_numeric_association": {
+    "description": "Association does not imply causation. Model must recommend bivariate association analysis (correlation/scatter) and explicitly warn against causal claims.",
+    "allowed_decisions": ["recommend_analysis", "request_information", "abstain"],
+    "prohibited_methods": ["assert_causation", "causal_inference_from_correlation"],
+    "required_concepts": ["correlation", "causation", "association", "bivariate", "confound"],
+    "prohibited_conclusions": ["proves causation", "causes higher revenue", "ad spend caused"],
+    "non_destructive_required": true,
+    "abstention_expected": false
+  },
+  "case_06_identifier_vs_measurement": {
+    "description": "Customer_ID is an identifier. Arithmetic mean of an identifier is analytically meaningless for customer behavior.",
+    "allowed_decisions": ["request_information", "recommend_analysis", "abstain"],
+    "prohibited_methods": ["mean_identifier", "numeric_regression_on_id"],
+    "required_concepts": ["identifier", "not a measurement", "meaningless", "semantic", "frequency"],
+    "prohibited_conclusions": ["average customer id reveals behavior", "higher customer id means better customer"],
+    "non_destructive_required": true,
+    "abstention_expected": false
+  },
+  "case_07_insufficient_evidence": {
+    "description": "Profile lacks marketing channel and ROI information. Model must request information or abstain, and must not hallucinate channels or figures.",
+    "allowed_decisions": ["request_information", "abstain"],
+    "prohibited_methods": ["hallucinate_roi", "recommend_analysis_without_data"],
+    "required_concepts": ["not available", "missing", "insufficient", "no marketing", "request"],
+    "prohibited_conclusions": ["channel with highest roi is", "q3 roi was"],
+    "non_destructive_required": true,
+    "abstention_expected": true
+  },
+  "case_08_conflicting_metadata": {
+    "description": "Transaction date has format ambiguity and conflicting dates. Model must identify metadata conflict and require resolution before time series decomposition.",
+    "allowed_decisions": ["request_information", "recommend_analysis"],
+    "prohibited_methods": ["execute_decomposition_unvalidated"],
+    "required_concepts": ["ambiguous", "conflict", "format", "validat", "resolve", "unresolved"],
+    "prohibited_conclusions": ["format is completely clean", "proceed without checking dates"],
+    "non_destructive_required": true,
+    "abstention_expected": false
+  }
+}
+

@@ -1,0 +1,69 @@
+{
+  "file_path": "fixtures/synthetic/demographics.csv",
+  "row_count": 4000,
+  "column_count": 3,
+  "headers": ["respondent_id", "education", "income"],
+  "overview": {
+    "rows": 4000,
+    "columns": 3,
+    "headers": ["respondent_id", "education", "income"],
+    "duplicate_rows": 0,
+    "unique_rows": 4000
+  },
+  "columns": {
+    "respondent_id": {
+      "inferred_type": "text",
+      "physical_type": "string",
+      "semantic_role": "identifier",
+      "missing_count": 0,
+      "valid_count": 4000,
+      "distinct_count": 4000
+    },
+    "education": {
+      "inferred_type": "categorical",
+      "physical_type": "string",
+      "semantic_role": "category",
+      "missing_count": 0,
+      "valid_count": 4000,
+      "distinct_count": 5
+    },
+    "income": {
+      "inferred_type": "numeric",
+      "physical_type": "float",
+      "semantic_role": "measure",
+      "missing_count": 600,
+      "missing_percentage": 15.0,
+      "valid_count": 3400,
+      "distinct_count": 2100,
+      "has_high_cardinality": true,
+      "numeric_stats": {
+        "count": 3400,
+        "mean": 62450.0,
+        "median": 58000.0,
+        "std_dev": 28300.0,
+        "min": 12000.0,
+        "max": 240000.0,
+        "q1": 41000.0,
+        "q3": 81000.0
+      },
+      "value_classification": {
+        "source_cell_count": 4000,
+        "missing_count": 600,
+        "blank_missing_count": 520,
+        "sentinel_missing_count": 80,
+        "valid_count": 3400,
+        "invalid_count": 0,
+        "missing_rate": 0.15,
+        "is_reconciled": true
+      }
+    }
+  },
+  "quality_issues": [
+    {
+      "type": "high_missing_values",
+      "column": "income",
+      "message": "Column 'income' has 15.0% missing values (600 rows)"
+    }
+  ]
+}
+

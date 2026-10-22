@@ -1,0 +1,63 @@
+{
+  "file_path": "fixtures/synthetic/marketing_campaigns.csv",
+  "row_count": 500,
+  "column_count": 3,
+  "headers": ["campaign_id", "ad_spend", "revenue"],
+  "overview": {
+    "rows": 500,
+    "columns": 3,
+    "headers": ["campaign_id", "ad_spend", "revenue"],
+    "duplicate_rows": 0,
+    "unique_rows": 500
+  },
+  "columns": {
+    "campaign_id": {
+      "inferred_type": "text",
+      "physical_type": "string",
+      "semantic_role": "identifier",
+      "missing_count": 0,
+      "valid_count": 500,
+      "distinct_count": 500
+    },
+    "ad_spend": {
+      "inferred_type": "numeric",
+      "physical_type": "float",
+      "semantic_role": "measure",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "valid_count": 500,
+      "distinct_count": 480,
+      "numeric_stats": {
+        "count": 500,
+        "mean": 4500.0,
+        "median": 4200.0,
+        "std_dev": 1600.0,
+        "min": 800.0,
+        "max": 12000.0,
+        "q1": 3100.0,
+        "q3": 5800.0
+      }
+    },
+    "revenue": {
+      "inferred_type": "numeric",
+      "physical_type": "float",
+      "semantic_role": "measure",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "valid_count": 500,
+      "distinct_count": 490,
+      "numeric_stats": {
+        "count": 500,
+        "mean": 18500.0,
+        "median": 17200.0,
+        "std_dev": 7200.0,
+        "min": 2500.0,
+        "max": 52000.0,
+        "q1": 12500.0,
+        "q3": 23000.0
+      }
+    }
+  },
+  "quality_issues": []
+}
+

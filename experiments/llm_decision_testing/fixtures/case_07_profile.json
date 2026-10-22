@@ -1,0 +1,51 @@
+{
+  "file_path": "fixtures/synthetic/inventory.csv",
+  "row_count": 350,
+  "column_count": 3,
+  "headers": ["item_sku", "warehouse_location", "units_in_stock"],
+  "overview": {
+    "rows": 350,
+    "columns": 3,
+    "headers": ["item_sku", "warehouse_location", "units_in_stock"],
+    "duplicate_rows": 0,
+    "unique_rows": 350
+  },
+  "columns": {
+    "item_sku": {
+      "inferred_type": "text",
+      "physical_type": "string",
+      "semantic_role": "identifier",
+      "missing_count": 0,
+      "valid_count": 350,
+      "distinct_count": 350
+    },
+    "warehouse_location": {
+      "inferred_type": "categorical",
+      "physical_type": "string",
+      "semantic_role": "category",
+      "missing_count": 0,
+      "valid_count": 350,
+      "distinct_count": 4
+    },
+    "units_in_stock": {
+      "inferred_type": "numeric",
+      "physical_type": "integer",
+      "semantic_role": "measure",
+      "missing_count": 0,
+      "valid_count": 350,
+      "distinct_count": 120,
+      "numeric_stats": {
+        "count": 350,
+        "mean": 45.2,
+        "median": 30.0,
+        "std_dev": 38.6,
+        "min": 0.0,
+        "max": 250.0,
+        "q1": 15.0,
+        "q3": 65.0
+      }
+    }
+  },
+  "quality_issues": []
+}
+

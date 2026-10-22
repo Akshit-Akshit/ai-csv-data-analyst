@@ -1,0 +1,80 @@
+{
+  "file_path": "fixtures/synthetic/customers.csv",
+  "row_count": 11493,
+  "column_count": 3,
+  "headers": ["customer_id", "Name", "signup_date"],
+  "overview": {
+    "rows": 11493,
+    "columns": 3,
+    "headers": ["customer_id", "Name", "signup_date"],
+    "duplicate_rows": 0,
+    "unique_rows": 11493
+  },
+  "columns": {
+    "customer_id": {
+      "inferred_type": "text",
+      "physical_type": "string",
+      "semantic_role": "identifier",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "valid_count": 11493,
+      "distinct_count": 11493,
+      "has_high_cardinality": true,
+      "identifier_stats": {
+        "is_candidate_key": true,
+        "is_sequential": false,
+        "duplicate_identifier_count": 0
+      }
+    },
+    "Name": {
+      "inferred_type": "text",
+      "physical_type": "string",
+      "semantic_role": "free_text",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "valid_count": 11493,
+      "distinct_count": 11493,
+      "has_high_cardinality": true,
+      "text_stats": {
+        "distinct_count": 11493,
+        "min_length": 3,
+        "max_length": 45,
+        "mean_length": 14.8
+      },
+      "value_classification": {
+        "source_cell_count": 11493,
+        "missing_count": 0,
+        "valid_count": 11493,
+        "invalid_count": 0,
+        "is_reconciled": true
+      }
+    },
+    "signup_date": {
+      "inferred_type": "text",
+      "physical_type": "datetime",
+      "semantic_role": "timestamp",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "valid_count": 11493,
+      "distinct_count": 820,
+      "has_high_cardinality": false,
+      "datetime_stats": {
+        "valid_timestamp_count": 11493,
+        "min_timestamp": "2021-01-01",
+        "max_timestamp": "2023-12-31",
+        "date_range_is_definitive": true
+      }
+    }
+  },
+  "quality_issues": [
+    {
+      "type": "high_cardinality",
+      "column": "Name",
+      "message": "Column 'Name' has 11493 distinct values (0.0% missing)"
+    }
+  ],
+  "relational_analysis": {
+    "candidate_single_keys": ["customer_id", "Name"]
+  }
+}
+

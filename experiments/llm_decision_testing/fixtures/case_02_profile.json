@@ -1,0 +1,95 @@
+{
+  "file_path": "fixtures/synthetic/orders.csv",
+  "row_count": 5000,
+  "column_count": 3,
+  "headers": ["order_id", "sales", "region"],
+  "overview": {
+    "rows": 5000,
+    "columns": 3,
+    "headers": ["order_id", "sales", "region"],
+    "duplicate_rows": 0,
+    "unique_rows": 5000
+  },
+  "columns": {
+    "order_id": {
+      "inferred_type": "text",
+      "physical_type": "string",
+      "semantic_role": "identifier",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "valid_count": 5000,
+      "distinct_count": 5000,
+      "has_high_cardinality": true,
+      "identifier_stats": {
+        "is_candidate_key": true,
+        "is_sequential": false,
+        "duplicate_identifier_count": 0
+      }
+    },
+    "sales": {
+      "inferred_type": "numeric",
+      "physical_type": "float",
+      "semantic_role": "measure",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "valid_count": 5000,
+      "distinct_count": 3120,
+      "has_high_cardinality": true,
+      "numeric_stats": {
+        "count": 5000,
+        "mean": 1250.45,
+        "median": 820.0,
+        "std_dev": 1840.12,
+        "min": 15.0,
+        "max": 38500.0,
+        "q1": 420.0,
+        "q3": 1550.0,
+        "range": 38485.0
+      },
+      "outlier_stats": {
+        "method": "iqr",
+        "factor": 1.5,
+        "iqr": 1130.0,
+        "lower_bound": -1275.0,
+        "upper_bound": 3245.0,
+        "candidate_count": 215,
+        "candidate_rate": 0.043,
+        "note": "Outlier candidates for investigation; not automatically classified as errors"
+      },
+      "value_classification": {
+        "source_cell_count": 5000,
+        "missing_count": 0,
+        "valid_count": 5000,
+        "invalid_count": 0,
+        "is_reconciled": true
+      }
+    },
+    "region": {
+      "inferred_type": "categorical",
+      "physical_type": "string",
+      "semantic_role": "category",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "valid_count": 5000,
+      "distinct_count": 4,
+      "has_high_cardinality": false,
+      "most_frequent_values": [
+        {"value": "North", "count": 1600},
+        {"value": "South", "count": 1400},
+        {"value": "East", "count": 1100},
+        {"value": "West", "count": 900}
+      ]
+    }
+  },
+  "quality_issues": [
+    {
+      "type": "outlier_candidates",
+      "column": "sales",
+      "message": "Column 'sales' has 215 candidate outliers based on 1.5x IQR"
+    }
+  ],
+  "relational_analysis": {
+    "candidate_single_keys": ["order_id"]
+  }
+}
+

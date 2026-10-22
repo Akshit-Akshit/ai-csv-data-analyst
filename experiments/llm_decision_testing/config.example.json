@@ -1,0 +1,11 @@
+{
+  "base_url": "http://127.0.0.1:11434/v1",
+  "model_name": "qwen3.5:0.8b",
+  "api_key": "ollama",
+  "timeout_seconds": 60.0,
+  "temperature": 0.1,
+  "max_tokens": 1024,
+  "reasoning_effort": "none",
+  "request_retries": 2,
+  "notes": "Target model: Qwen 3.5 0.8B on Ollama OpenAI endpoint. reasoning_effort 'none' disables infinite thinking loops for fast deterministic JSON planning."
+}

@@ -1,0 +1,9 @@
+# LLM Decision Testing Experiment Requirements
+# The experiment framework is written using Python 3.10+ standard library (urllib, json, dataclasses)
+# and has ZERO mandatory external dependencies.
+#
+# The optional packages below can be installed in a dedicated virtualenv if desired:
+# requests>=2.31.0
+# pydantic>=2.0.0
+# pytest>=7.0.0
+

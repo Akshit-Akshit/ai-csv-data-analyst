@@ -1,0 +1,75 @@
+{
+  "file_path": "fixtures/synthetic/vehicles.csv",
+  "row_count": 2000,
+  "column_count": 3,
+  "headers": ["vin", "make", "Year"],
+  "overview": {
+    "rows": 2000,
+    "columns": 3,
+    "headers": ["vin", "make", "Year"],
+    "duplicate_rows": 0,
+    "unique_rows": 2000
+  },
+  "columns": {
+    "vin": {
+      "inferred_type": "text",
+      "physical_type": "string",
+      "semantic_role": "identifier",
+      "missing_count": 0,
+      "valid_count": 2000,
+      "distinct_count": 2000,
+      "has_high_cardinality": true
+    },
+    "make": {
+      "inferred_type": "categorical",
+      "physical_type": "string",
+      "semantic_role": "category",
+      "missing_count": 0,
+      "valid_count": 2000,
+      "distinct_count": 12,
+      "has_high_cardinality": false
+    },
+    "Year": {
+      "inferred_type": "numeric",
+      "physical_type": "integer",
+      "semantic_role": "timestamp",
+      "missing_count": 0,
+      "missing_percentage": 0.0,
+      "valid_count": 1900,
+      "distinct_count": 25,
+      "has_high_cardinality": false,
+      "numeric_stats": {
+        "count": 1900,
+        "mean": 2016.4,
+        "median": 2017.0,
+        "std_dev": 4.1,
+        "min": 1998.0,
+        "max": 2023.0,
+        "q1": 2014.0,
+        "q3": 2019.0
+      },
+      "value_classification": {
+        "source_cell_count": 2000,
+        "missing_count": 0,
+        "blank_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "valid_count": 1900,
+        "invalid_count": 100,
+        "invalid_rate": 0.05,
+        "is_reconciled": true
+      },
+      "type_evidence": {
+        "violating_values_count": 100,
+        "violating_samples": ["unknown", "N/A", "9999", "??", "TBD"]
+      }
+    }
+  },
+  "quality_issues": [
+    {
+      "type": "invalid_values",
+      "column": "Year",
+      "message": "Column 'Year' contains 100 values (5.0%) violating declared integer format"
+    }
+  ]
+}
+

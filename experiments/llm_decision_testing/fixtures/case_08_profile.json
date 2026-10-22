@@ -1,0 +1,78 @@
+{
+  "file_path": "fixtures/synthetic/events.csv",
+  "row_count": 1200,
+  "column_count": 3,
+  "headers": ["event_id", "transaction_date", "metric_value"],
+  "overview": {
+    "rows": 1200,
+    "columns": 3,
+    "headers": ["event_id", "transaction_date", "metric_value"],
+    "duplicate_rows": 0,
+    "unique_rows": 1200
+  },
+  "columns": {
+    "event_id": {
+      "inferred_type": "text",
+      "physical_type": "string",
+      "semantic_role": "identifier",
+      "missing_count": 0,
+      "valid_count": 1200,
+      "distinct_count": 1200
+    },
+    "transaction_date": {
+      "inferred_type": "text",
+      "physical_type": "datetime",
+      "semantic_role": "timestamp",
+      "missing_count": 0,
+      "valid_count": 1200,
+      "distinct_count": 450,
+      "datetime_stats": {
+        "valid_timestamp_count": 800,
+        "min_timestamp": null,
+        "max_timestamp": null,
+        "ambiguous_dates_count": 350,
+        "unresolved_ambiguous_count": 350,
+        "invalid_dates_count": 50,
+        "conflicting_dates_count": 40,
+        "chosen_format": null,
+        "format_resolution_method": "unresolved",
+        "date_range_is_definitive": false,
+        "uncertainty": "Date format remains ambiguous (could be DD/MM/YYYY or MM/DD/YYYY); definitive date range withheld."
+      },
+      "type_evidence": {
+        "datetime_ratio": 0.67,
+        "numeric_ratio": 0.33,
+        "conflict": "Ambiguous slash formatting without companion month-year evidence"
+      }
+    },
+    "metric_value": {
+      "inferred_type": "numeric",
+      "physical_type": "float",
+      "semantic_role": "measure",
+      "missing_count": 0,
+      "valid_count": 1200,
+      "distinct_count": 680,
+      "numeric_stats": {
+        "count": 1200,
+        "mean": 105.4,
+        "median": 98.0,
+        "std_dev": 22.1,
+        "min": 45.0,
+        "max": 185.0
+      }
+    }
+  },
+  "quality_issues": [
+    {
+      "type": "ambiguous_dates_unresolved",
+      "column": "transaction_date",
+      "message": "Column 'transaction_date' has 350 dates with unresolved format ambiguity"
+    },
+    {
+      "type": "date_context_conflict",
+      "column": "transaction_date",
+      "message": "Column 'transaction_date' has 40 dates conflicting with contextual column evidence"
+    }
+  ]
+}
+
